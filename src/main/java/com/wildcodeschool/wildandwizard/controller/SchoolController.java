@@ -20,11 +20,12 @@ import java.util.Optional;
 @Controller
 public class SchoolController {
 
-    @Autowired
-    private SchoolRepository schoolRepository;
-
-    @Autowired
-    private WizardRepository wizardRepository;
+    private final SchoolRepository schoolRepository;
+    private final WizardRepository wizardRepository;
+    public SchoolController(SchoolRepository schoolRepositoryInjected, WizardRepository wizardRepositoryInjected){
+        this.schoolRepository = schoolRepositoryInjected;
+        this.wizardRepository = wizardRepositoryInjected;
+    }
 
     @GetMapping("/")
     public String getSchools(Model out) {
